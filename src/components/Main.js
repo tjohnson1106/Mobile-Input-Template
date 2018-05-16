@@ -11,8 +11,25 @@ import {
 import Touchable from "@appandflow/touchable";
 
 class Main extends Component {
-  state = {};
+  constructor(props) {
+    super(props);
+    this.state = {
+      noteArray: [],
+      noteText: ""
+    };
+  }
   render() {
+    let notes = this.state.noteArray.map((val, key) => {
+      return (
+        <Note
+          key={key}
+          keyval={key}
+          val={val}
+          deleteMethod={() => this.deleteNote(key)}
+        />
+      );
+    });
+
     return (
       <View style={styles.container}>
         <View style={styles.header}>
@@ -24,18 +41,43 @@ class Main extends Component {
         <View style={styles.footer}>
           <TextInput
             style={styles.textInput}
+            onChangeText={noteText => this.setState({ noteText })}
+            value={this.state.noteText}
             placeholder="note"
             placeholderTextColor="white"
             underlineColorAndroid="transparent"
           />
         </View>
         <View style={styles.addButton}>
-          <Touchable feedback="opacity">
+          <Touchable
+            feedback="opacity"
+            onPress={this.addNote.bind(this)}
+          >
             <Text style={styles.addButtonText}>+</Text>
           </Touchable>
         </View>
       </View>
     );
+  }
+
+  addNote() {
+    if (this.state.noteText) {
+      let d = new Date();
+      this.state.noteArray.push({
+        date:
+          d.getFullYear() +
+          "/" +
+          (d.getMonth() + 1) +
+          "/" +
+          d.getDate()
+      });
+      this.setState({
+        noteArray
+      });
+      this.setState({
+        noteText: ""
+      });
+    }
   }
 }
 
