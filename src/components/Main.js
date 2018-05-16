@@ -29,9 +29,11 @@ class Main extends Component {
             underlineColorAndroid="transparent"
           />
         </View>
-        <Touchable feedback="opacity" style={styles.addButton}>
-          <Text style={styles.addButtonText}>+</Text>
-        </Touchable>
+        <View style={styles.addButton}>
+          <Touchable feedback="opacity">
+            <Text style={styles.addButtonText}>+</Text>
+          </Touchable>
+        </View>
       </View>
     );
   }
@@ -76,17 +78,16 @@ const styles = StyleSheet.create({
 
   addButton: {
     position: "absolute",
-    backgroundColor: "#E91E63",
     zIndex: 11,
     right: 20,
     bottom: 90,
-    height: 90,
-    width: 90,
-    height: 90,
-    borderRadius: 50,
+    backgroundColor: "#E91E63",
+    height: 70,
+    width: 70,
+    borderRadius: 40,
     alignItems: "center",
     justifyContent: "center",
-    elevation: 1
+    elevation: 8
   },
   addButtonText: {
     color: "#fff",
