@@ -79,14 +79,22 @@ class Main extends Component {
       this.setState({ noteText: "" });
     }
   }
+
+  deleteNote(key) {
+    this.state.noteArray.splice(key, 1);
+    this.setState({
+      noteArray: this.state.noteArray
+    });
+  }
 }
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1
+    flex: 1,
+    backgroundColor: "#BDBDBD"
   },
   header: {
-    backgroundColor: "#E91E63",
+    backgroundColor: "#303F9F",
     alignItems: "center",
     justifyContent: "center",
     borderBottomWidth: 10,
@@ -94,7 +102,7 @@ const styles = StyleSheet.create({
   },
   headerText: {
     color: "white",
-    fontSize: 18,
+    fontSize: 19,
     padding: 26
   },
   scrollContainer: {
@@ -123,17 +131,18 @@ const styles = StyleSheet.create({
     zIndex: 11,
     right: 20,
     bottom: 90,
-    backgroundColor: "#E91E63",
+    backgroundColor: "#303F9F",
     height: 70,
     width: 70,
     borderRadius: 40,
     alignItems: "center",
     justifyContent: "center",
-    elevation: 8
+    elevation: 8,
+    shadowColor: "#303f9f"
   },
   addButtonText: {
     color: "#fff",
-    fontSize: 24
+    fontSize: 26
   }
 });
 
