@@ -7,8 +7,9 @@ import {
   ScrollView,
   Touc
 } from "react-native";
-
 import Touchable from "@appandflow/touchable";
+
+import Note from "./Note";
 
 class Main extends Component {
   constructor(props) {
@@ -36,7 +37,9 @@ class Main extends Component {
           <Text style={styles.headerText}>Notes</Text>
         </View>
 
-        <ScrollView style={styles.scrollContainer}>{}</ScrollView>
+        <ScrollView style={styles.scrollContainer}>
+          {notes}
+        </ScrollView>
 
         <View style={styles.footer}>
           <TextInput
@@ -62,21 +65,18 @@ class Main extends Component {
 
   addNote() {
     if (this.state.noteText) {
-      let d = new Date();
+      var d = new Date();
       this.state.noteArray.push({
         date:
           d.getFullYear() +
           "/" +
           (d.getMonth() + 1) +
           "/" +
-          d.getDate()
+          d.getDate(),
+        note: this.state.noteText
       });
-      this.setState({
-        noteArray
-      });
-      this.setState({
-        noteText: ""
-      });
+      this.setState({ noteArray: this.state.noteArray });
+      this.setState({ noteText: "" });
     }
   }
 }

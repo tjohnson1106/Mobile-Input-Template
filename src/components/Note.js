@@ -1,8 +1,10 @@
 import React, { Component } from "react";
-import { StyleSheet, Text, View, Touchable } from "react-native";
-import Touchable from "@appandflow/touchable";
-
-import Note from "./Note";
+import {
+  StyleSheet,
+  Text,
+  View,
+  TouchableOpacity
+} from "react-native";
 
 class Note extends Component {
   render() {
@@ -11,12 +13,12 @@ class Note extends Component {
         <Text style={styles.noteText}>{this.props.val.date} </Text>
         <Text style={styles.noteText}>{this.props.val.note} </Text>
 
-        <Touchable
+        <TouchableOpacity
           onPress={this.props.deleteMethod}
           style={styles.noteDelete}
         >
           <Text style={styles.noteDeleteText}>{}</Text>
-        </Touchable>
+        </TouchableOpacity>
       </View>
     );
   }
